@@ -16,7 +16,7 @@ HOMEDIR="/home/$AZUREUSER";
 # Install MultiChain using regular steps, cleaning up at the end
 ################################################################
 cd $HOMEDIR
-wget https://www.multichain.com/download/multichain-latest.tar.gz
+sudo curl -sL --max-time 10 --retry 3 --retry-delay 3 --retry-max-time 60 https://www.multichain.com/download/multichain-latest.tar.gz -o multichain-latest.tar.gz || exit 1;
 tar -xvzf multichain-latest.tar.gz
 cd multichain-*
 sudo mv multichaind multichain-cli multichain-util multichaind-cold /usr/local/bin

@@ -11,6 +11,9 @@
     "artifactsLocationURL": {
       "type": "string"
     },
+    "artifactsLocationUrlSasToken": {
+      "type": "string"
+    },
     "location": {
       "type": "string"
     },
@@ -22,8 +25,7 @@
     }
   },
   "variables": {
-    "apiVersionVirtualMachinesExtensions": "2016-03-30",
-    "dockerfile": "docker-compose.yml"
+    "apiVersionVirtualMachinesExtensions": "2018-06-01"
   },
   "resources": [
     {
@@ -38,7 +40,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "[concat(parameters('artifactsLocationURL'), '/scripts/configure.sh')]"
+            "[uri(parameters('artifactsLocationUrl'), concat('scripts/configure.sh', parameters('artifactsLocationUrlSasToken')))]"
           ]
         },
         "protectedSettings": {
